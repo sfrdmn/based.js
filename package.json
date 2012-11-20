@@ -1,7 +1,7 @@
 {
-  "name": "based.js",
+  "name": "basedjs",
   "version": "0.0.1",
-  "description": "Some inheritance sugar for ECMA 5 shit",
+  "description": "Some ECMA5 savvy inheritance/general object management",
   "main": "index.js",
   "directories": {
     "test": "tests"
