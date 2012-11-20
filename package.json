@@ -1,0 +1,21 @@
+{
+  "name": "based.js",
+  "version": "0.0.1",
+  "description": "Some inheritance sugar for ECMA 5 shit",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "underscore": "~1.4.2",
+    "nodeunit": "~0.7.4"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": "https://github.com/sfrdmn/based.js",
+  "author": "Sean Fridman",
+  "license": "BSD"
+}
