@@ -1,5 +1,6 @@
 # based.js
 ![](http://i.imgur.com/SiCJZ.jpg)
+
 Some ECMA5 savvy inheritance/general object management including descriptor aware mixins, clones, etc.
 
 Pretty prototypal. Distinction is not made between "class" objects and instances,
