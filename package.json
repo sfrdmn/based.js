@@ -1,10 +1,10 @@
 {
   "name": "basedjs",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Some ECMA5 savvy inheritance/general object management",
   "main": "index.js",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "dependencies": {
   },
