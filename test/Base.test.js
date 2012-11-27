@@ -99,32 +99,6 @@ module.exports = exports = {
 
   },
 
-  extendInitializeTests: {
-
-    testExtendAndInitialize: function(test) {
-      var A = Base.extend({
-        initialize: function(answer) {
-          this.answer = answer;
-        }
-      });
-      var B = A.extendAndInitialize({
-        isItSoCool: function() {
-          return this.answer;
-        }
-      }, 'yes!');
-      test.ok(B.isItSoCool, 'B should be extended with new method');
-      test.ok(B.answer, 'B should have been initialized with args');
-      test.equal(B.isItSoCool(), 'yes!', 'B should be so cool');
-      test.done();
-    },
-
-    testExtendWithDescriptorsAndInitialize: function(test) {
-      // TODO
-      test.done();
-    },
-
-  },
-
   createTests: {
 
     testCreate: function(test) {
