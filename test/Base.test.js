@@ -155,6 +155,16 @@ module.exports = exports = {
       test.deepEqual(B.isCool, A.isCool, 'Clone should clone, duh');
       test.ok(B.isLame, 'Clone should only clone enumerable props');
       test.done();
+    },
+
+    testCloneExtend: function(test) {
+      // TODO
+      test.done();
+    },
+
+    testCloneCreate: function(test) {
+      // TODO
+      test.done();
     }
 
   },
