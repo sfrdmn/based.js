@@ -3,26 +3,55 @@
 
 Some ECMA5 savvy inheritance/general object management including descriptor aware mixins, clones, etc.
 
-Pretty prototypal. Distinction is not made between "class" objects and instances,
-but rather between uninitialized objects and initialized objects
+Main points:
 
-`create` creates a new object and initializes it,
-`extend` creates a new object without initializing it.
+* Make it easier to manage object descriptors
+* `Proto` should provide simple, highly cohesive object manipulation methods which can be used to
+more easily build specialized objects (such as `Base`)
+* `Base` should be a kinda normal-ish Javascript class object
 
-No prototype property and thus no "class properties" :/
+Objects which inherit from `Proto` have the following methods:
+
+* createSelf
+* extendSelf
+* extendSelfWithDescriptors
+* clone
+* cloneAll
+* mixin
+* mixinAll
+* defineProperties
+* defineProperty
+
+`Base` inherits from `Proto`
+
+Objects which inherit from `Base` have the following methods:
+
+* create
+* extend
+* extendWithDescriptors
 
 ## Usage
 ```Javascript
 var Base = require('basedjs').Base
 
 var A = Base.extend({
+  initialize: function() {
+    this.msg = 'yo';
+  },
   hi: function() {
     return 'hey dood :)';
   }
+}, {
+  isCool: 'yes'
 });
 
 var a = A.create();
-a.hi();
+a.hi(); // 'hey dood :)'
+a.msg; // 'yo'
+A.isCool; // 'yes'
+
+var b = a.extend() // Error
+var b = a.extendSelf() // Works
 ```
 
 <blockquote>
