@@ -131,6 +131,11 @@ module.exports = exports = {
       test.done();
     },
 
+    testMixinProperties: function(test) {
+      // TODO
+      test.done();
+    }
+
   },
 
   objectCloneTests: {
