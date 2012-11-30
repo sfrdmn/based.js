@@ -54,6 +54,8 @@ var b = a.extend() // Error
 var b = a.extendSelf() // Works
 ```
 
+BSD License
+
 <blockquote>
   <p>AK40 send ya, A fuckin blessin</p>
   <cite>Lil B</cite>
