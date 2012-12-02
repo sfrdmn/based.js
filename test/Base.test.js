@@ -1,4 +1,5 @@
 var Base = require('../lib/Base');
+var Proto = require('../lib/Proto');
 var Util = require('../lib/Util');
 
 var __Base__ = Base // Save original Base for polyfills
@@ -46,9 +47,19 @@ module.exports = exports = {
   extendTests: {
 
     testEmptyExtend: function(test) {
-      // TODO
       var A = Base.extend();
       var B = Base.extend({});
+      var protoA = Object.getPrototypeOf(A);
+      var protoProtoA = Object.getPrototypeOf(A.prototype);
+      var protoB = Object.getPrototypeOf(B);
+      var protoProtoB = Object.getPrototypeOf(B.prototype);
+
+      test.equals(protoA, Base, 'Prototype of extended object should be Base');
+      test.ok(protoA.prototype, 'Extended object should have prototype property');
+      test.equals(protoProtoA, Proto, 'Prototype property prototype should be Proto');
+      test.equals(protoB, Base, 'Prototype of extended object should be Base');
+      test.ok(protoB.prototype, 'Extended object should have prototype property');
+      test.equals(protoProtoB, Proto, 'Prototype property prototype should be Proto');
       test.done();
     },
 
@@ -102,6 +113,43 @@ module.exports = exports = {
 
     testCreateInitializeCalled: function(test) {
       // TODO
+      test.done();
+    }
+
+  },
+
+  functionalityTests: {
+
+    prototypeChainTest: function(test) {
+      var A = Base.extend({
+        name: 'A_proto'
+      }, {
+        name: 'A'
+      });
+      var B = A.extend({
+        name: 'B_proto'
+      }, {
+        name: 'B'
+      });
+      var C = B.extend({
+        name: 'C_proto'
+      }, {
+        name: 'C'
+      });
+      [A, B, C].forEach(function(Obj, i, list) {
+        var proto = Object.getPrototypeOf(Obj);
+        var parentObj = Base;
+        var obj = Obj.create();
+        test.equals(proto, parentObj, Obj.name + ' should inherit from Base');
+        test.equals(Object.getPrototypeOf(obj), Obj.prototype, 'Created obj should inherit from Obj prototype');
+      });
+      [Proto, A.prototype, B.prototype, C.prototype].forEach(function(obj, i, list) {
+        if (i) {
+          var proto = Object.getPrototypeOf(obj);
+          var parentObj = list[i - 1];
+          test.equals(proto, parentObj, obj.name + ' should inherit from ' + parentObj.name);
+        }
+      });
       test.done();
     }
 
