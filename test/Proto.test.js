@@ -95,6 +95,16 @@ module.exports = exports = {
       test.equal(B.isLame, 'lame',
           'Non-enumerable properties of source should exist in dest');
         test.done();
+    },
+
+    testExtendSelfWithObject: function(test) {
+      var A = Proto.extendSelfWithObject(
+          this.unionObjWithDescriptors);
+      test.ok(A.isCool, "Object should be cool");
+      test.ok(A.isLame, "Object should be lame");
+      test.deepEqual(A, this.coolObj,
+          "Should have same property descriptors as extend obj");
+      test.done();
     }
 
   },
@@ -218,6 +228,18 @@ module.exports = exports = {
 
       var A = Proto.createSelf();
       test.equal(callCount, 1, 'Intialize should be called on object createSelf');
+      test.done();
+    }
+
+  },
+
+  miscTests: {
+
+    testGetDescriptors: function(test) {
+      var A = Proto.extendSelfWithDescriptors(this.descriptors);
+      var descriptors = A.getDescriptors();
+      test.deepEqual(descriptors, this.descriptors,
+          "Descriptor representation of object should be correct");
       test.done();
     }
 

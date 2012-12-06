@@ -5,8 +5,8 @@ Some ECMA5 savvy inheritance/general object management including descriptor awar
 
 Main points:
 
-* Make it easier to manage object descriptors
-* `Proto` should provide simple, highly cohesive object manipulation methods which can be used to
+* Make it easier to manage property descriptors
+* `Proto` should provide simple object manipulation methods which can be used to
 more easily build specialized objects (such as `Base`)
 * `Base` should be a kinda normal-ish Javascript class object
 
