@@ -8,7 +8,7 @@ module.exports = {
 
   Base: require('./lib/Base'),
 
-  decorators: require('./lib/Decorators'),
+  decorators: require('./lib/decorators'),
 
   configure: function(options) {
     this.Util.mixinKeys(config, options);
