@@ -2,7 +2,7 @@ var Base = require('../lib/Base');
 var Proto = require('../lib/Proto');
 var Util = require('../lib/Util');
 var decorators = require('../lib/decorators');
-var Decorator = decorators.Decorator;
+var Decorator = require('../lib/Decorator');
 var EventDecorator = decorators.EventDecorator;
 
 var OldGuyDecorator = Decorator.extendSelf({

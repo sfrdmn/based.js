@@ -8,6 +8,8 @@ module.exports = {
 
   Base: require('./lib/Base'),
 
+  Decorator: require('./lib/Decorator'),
+
   decorators: require('./lib/decorators'),
 
   configure: function(options) {
