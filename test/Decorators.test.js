@@ -7,7 +7,7 @@ var EventDecorator = decorators.EventDecorator;
 
 var OldGuyDecorator = Decorator.extendSelf({
   getName: function(){
-    return this.decoratedObj_.getName() + ' Sr.';
+    return this._deco_.getName() + ' Sr.';
   }
 });
 
