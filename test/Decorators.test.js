@@ -57,6 +57,22 @@ module.exports = exports = {
     var a = A.create();
     test.equal(a.getName(), 'Jon Knox Sr. Sr.');
     test.done();
+  },
+
+  testDecorateWithMultipleExtends: function(test) {
+    var A = Base.extend({
+      getName: function() {
+        return 'Jon Knox';
+      }
+    }, {
+      decorators: [OldGuyDecorator]
+    });
+    var B = A.extend();
+    var a = A.create();
+    var b = B.create();
+    test.equal(a.getName(), 'Jon Knox Sr.');
+    test.equal(b.getName(), 'Jon Knox Sr.');
+    test.done();
   }
 
 };
