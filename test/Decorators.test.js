@@ -18,40 +18,45 @@ module.exports = exports = {
     test.done();
   },
 
-  DecorationDecoratorTests: {
-
-    testExtendWithDecorators: function(test) {
-      var A = Base.extend({
-        getName: function() {
-          return 'Jon Knox';
-        }
-      }, {
-        decorators: [OldGuyDecorator]
-      });
-      var a = A.create();
-      test.equal(a.getName(), 'Jon Knox Sr.');
-      test.done();
-    }
-
+  testExtendWithDecorators: function(test) {
+    var A = Base.extend({
+      getName: function() {
+        return 'Jon Knox';
+      }
+    }, {
+      decorators: [OldGuyDecorator]
+    });
+    var a = A.create();
+    test.equal(a.getName(), 'Jon Knox Sr.');
+    test.done();
   },
 
-  EventDecoratorTests: {
+  testEventDecorator: function(test) {
+    test.expect(1);
+    var A = Base.extend({
+      msg: 'hey!'
+    }, {
+      decorators: [EventDecorator]
+    });
+    var a = A.create();
+    a.on('go', function() {
+      test.equals(a.msg, 'hey!');
+    });
+    a.emit('go');
+    test.done();
+  },
 
-    testEventDecoration: function(test) {
-      test.expect(1);
-      var A = Base.extend({
-        msg: 'hey!'
-      }, {
-        decorators: [EventDecorator]
-      });
-      var a = A.create();
-      a.on('go', function() {
-        test.equals(a.msg, 'hey!');
-      });
-      a.emit('go');
-      test.done();
-    }
-
+  testMultipleDecorators: function(test) {
+    var A = Base.extend({
+      getName: function() {
+        return 'Jon Knox';
+      }
+    }, {
+      decorators: [OldGuyDecorator, OldGuyDecorator]
+    });
+    var a = A.create();
+    test.equal(a.getName(), 'Jon Knox Sr. Sr.');
+    test.done();
   }
 
 };
